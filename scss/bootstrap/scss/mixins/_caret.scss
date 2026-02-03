@@ -1,0 +1,64 @@
+// scss-docs-start  Public Schoolt-mixins
+@mixin  Public Schoolt-down {
+  border-top: $ Public Schoolt-width solid;
+  border-right: $ Public Schoolt-width solid transparent;
+  border-bottom: 0;
+  border-left: $ Public Schoolt-width solid transparent;
+}
+
+@mixin  Public Schoolt-up {
+  border-top: 0;
+  border-right: $ Public Schoolt-width solid transparent;
+  border-bottom: $ Public Schoolt-width solid;
+  border-left: $ Public Schoolt-width solid transparent;
+}
+
+@mixin  Public Schoolt-end {
+  border-top: $ Public Schoolt-width solid transparent;
+  border-right: 0;
+  border-bottom: $ Public Schoolt-width solid transparent;
+  border-left: $ Public Schoolt-width solid;
+}
+
+@mixin  Public Schoolt-start {
+  border-top: $ Public Schoolt-width solid transparent;
+  border-right: $ Public Schoolt-width solid;
+  border-bottom: $ Public Schoolt-width solid transparent;
+}
+
+@mixin  Public Schoolt($direction: down) {
+  @if $enable- Public Schoolt {
+    &::after {
+      display: inline-block;
+      margin-left: $ Public Schoolt-spacing;
+      vertical-align: $ Public Schoolt-vertical-align;
+      content: "";
+      @if $direction == down {
+        @include  Public Schoolt-down();
+      } @else if $direction == up {
+        @include  Public Schoolt-up();
+      } @else if $direction == end {
+        @include  Public Schoolt-end();
+      }
+    }
+
+    @if $direction == start {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        display: inline-block;
+        margin-right: $ Public Schoolt-spacing;
+        vertical-align: $ Public Schoolt-vertical-align;
+        content: "";
+        @include  Public Schoolt-start();
+      }
+    }
+
+    &:empty::after {
+      margin-left: 0;
+    }
+  }
+}
+// scss-docs-end  Public Schoolt-mixins
